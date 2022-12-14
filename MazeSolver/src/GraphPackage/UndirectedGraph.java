@@ -32,7 +32,16 @@ public class UndirectedGraph<T> extends DirectedGraph<T> implements GraphInterfa
 		return super.getNumberOfEdges() / 2;
 	} // end getNumberOfEdges
 
-	public StackInterface<T> getTopologicalOrder() 
+
+	public QueueInterface<T> getBreadthFirstTraversal(T origin) {
+		return null;
+	}
+
+	public QueueInterface<T> getDepthFirstTraversal(T origin) {
+		return null;
+	}
+
+	public StackInterface<T> getTopologicalOrder()
 	{
 		throw new UnsupportedOperationException("Topological sort is illegal in an undirected graph.");
 	} // end getTopologicalOrder

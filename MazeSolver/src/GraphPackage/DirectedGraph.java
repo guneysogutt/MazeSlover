@@ -1,6 +1,12 @@
 package GraphPackage;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Iterator;
 import ADTPackage.*; // Classes that implement various ADTs
+import com.sun.source.tree.BreakTree;
+
 /**
  A class that implements the ADT directed graph.
  @author Frank M. Carrano
@@ -92,8 +98,8 @@ public class DirectedGraph<T> implements GraphInterface<T>
 	      nextVertex.setPredecessor(null);
 	   } // end while
 	} // end resetVertices
-	
-	public StackInterface<T> getTopologicalOrder() 
+
+	public StackInterface<T> getTopologicalOrder()
 	{
 		resetVertices();
 
@@ -111,40 +117,78 @@ public class DirectedGraph<T> implements GraphInterface<T>
 	
 	
    //###########################################################################
-   /*   public QueueInterface<T> getBreadthFirstSearch(T origin, T end) 
-    * 		return the traversal order between origin vertex and end vertex
-    */
+      public QueueInterface<T> getBreadthFirstTraversal(T origin, T end) {
+	   return null;
+	  }
+
+    //		return the traversal order between origin vertex and end vertex
+
    //###########################################################################
 
   
 	
 	
    //###########################################################################
-   /*   public QueueInterface<T> getDepthFirstTraversal(T origin, T end) 
-    * 		return depth first search traversal order between origin vertex and end vertex
-    */
+      public QueueInterface<T> getDepthFirstTraversal(T origin, T end)
+   {
+	   return null;
+	  }
+    		//return depth first search traversal order between origin vertex and end vertex
+
    //###########################################################################
 		
 	
 	
 	
 	//###########################################################################
-	   /*   public int getShortestPath(T begin, T end, StackInterface<T> path) 
-	    * 		return the shortest path between begin vertex and end vertex
-	    */
+	     public int getShortestPath(T begin, T end, StackInterface<T> path) {
+	   return 0;
+	  }
+	    // 		return the shortest path between begin vertex and end vertex
+
     //###########################################################################
   
    
 	
    
     //###########################################################################
-	/** Precondition: path is an empty stack (NOT null) */
-    /* Use EntryPQ instead of Vertex in Priority Queue because multiple entries contain
-     * 	the same vertex but different costs - cost of path to vertex is EntryPQ's priority value
-     * public double getCheapestPath(T begin, T end, StackInterface<T> path)
-     * 		return the cost of the cheapest path
-     */
+	// Precondition: path is an empty stack (NOT null) */
+    //Use EntryPQ instead of Vertex in Priority Queue because multiple entries contain
+     //* 	the same vertex but different costs - cost of path to vertex is EntryPQ's priority value
+     //*
+     public double getCheapestPath(T begin, T end, StackInterface<T> path){
+	   return 0.0;
+	  }
+     //		return the cost of the cheapest path
+
     //###########################################################################
+
+
+	public void readMazeFiles(){
+		File fileName = new File("MazeFiles\\maze1.txt");
+		File[] files = fileName.listFiles();
+		try {
+
+			BufferedReader bufferedReader = new BufferedReader(new FileReader(fileName));
+			String line;
+			int row = 0,column;
+
+			while((line = bufferedReader.readLine()) != null){
+				column = 0;
+				while (column < line.length()){
+					if (line.substring(column,column+1).equals(" ")){
+						System.out.println("(" + row + "," + column + ")");
+					}
+					column++;
+				}
+				row++;
+			}
+
+		}
+		catch (IOException s) {
+			System.out.println("file not found");
+		}
+	}
 
 
 	
@@ -159,7 +203,7 @@ public class DirectedGraph<T> implements GraphInterface<T>
 		{
 			VertexInterface<T> nextVertex = vertexIterator.next();
 			
-			// If nextVertex is unvisited AND has only visited neighbors)
+			// If nextVertex is unvisited AND has only visited neighbors
 			if (!nextVertex.isVisited())
 			{ 
 				if (nextVertex.getUnvisitedNeighbor() == null )

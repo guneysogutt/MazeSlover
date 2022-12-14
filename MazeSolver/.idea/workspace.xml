@@ -1,14 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca634f99-26e7-4999-a454-08faad1a58bd" name="Changes" comment="" />
+    <list default="true" id="ca634f99-26e7-4999-a454-08faad1a58bd" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ADTPackage/LinkedQueue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ADTPackage/LinkedQueue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ADTPackage/UnsortedLinkedDictionary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ADTPackage/UnsortedLinkedDictionary.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GraphPackage/DirectedGraph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GraphPackage/DirectedGraph.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GraphPackage/GraphAlgorithmsInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GraphPackage/GraphAlgorithmsInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GraphPackage/UndirectedGraph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GraphPackage/UndirectedGraph.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2IjycQys1U8vFlrLkCH8Tl7cEYG" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -16,13 +36,35 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/guney/IdeaProjects/newTest&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
+  <component name="RunManager">
+    <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Test" />
+      <module name="MazeSolver" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Test" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -31,8 +73,23 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1670709369712</updated>
+      <workItem from="1670709371282" duration="406000" />
+      <workItem from="1670746540795" duration="1890000" />
+      <workItem from="1670782360436" duration="5117000" />
+      <workItem from="1670839767733" duration="236000" />
+      <workItem from="1670840144062" duration="12000" />
+      <workItem from="1670840169533" duration="1728000" />
+      <workItem from="1670869517450" duration="731000" />
+      <workItem from="1670952392515" duration="4768000" />
+      <workItem from="1671003892486" duration="361000" />
+      <workItem from="1671020673989" duration="7020000" />
+      <workItem from="1671027775449" duration="10000" />
+      <workItem from="1671039561881" duration="1797000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -44,5 +101,12 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="ADTPackage.UnsortedLinkedDictionary$Node" memberName="next" />
+      </pinned-members>
+    </pin-to-top-manager>
   </component>
 </project>

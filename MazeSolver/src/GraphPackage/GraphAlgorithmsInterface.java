@@ -12,13 +12,13 @@ public interface GraphAlgorithmsInterface<T>
        @param origin  An object that labels the origin vertex of the traversal.
        @return  A queue of labels of the vertices in the traversal, with
                 the label of the origin vertex at the queue's front. */
-   public QueueInterface<T> getBreadthFirstTraversal(T origin);
+   public QueueInterface<T> getBreadthFirstTraversal(T origin, T end);
 
    /** Performs a depth-first traversal of this graph.
        @param origin  An object that labels the origin vertex of the traversal.
        @return  A queue of labels of the vertices in the traversal, with
                 the label of the origin vertex at the queue's front. */
-   public QueueInterface<T> getDepthFirstTraversal(T origin);
+   public QueueInterface<T> getDepthFirstTraversal(T origin, T end);
 
    /** Performs a topological sort of the vertices in this graph without cycles.
        @return  A stack of vertex labels in topological order, beginning
