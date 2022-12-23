@@ -1,11 +1,8 @@
 package GraphPackage;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+
 import java.util.Iterator;
 import ADTPackage.*; // Classes that implement various ADTs
-import com.sun.source.tree.BreakTree;
+
 
 /**
  A class that implements the ADT directed graph.
@@ -15,6 +12,9 @@ import com.sun.source.tree.BreakTree;
  */
 public class DirectedGraph<T> implements GraphInterface<T>
 {
+
+	Vertex<T>[][] adjacencyMatrix;
+
    private DictionaryInterface<T, VertexInterface<T>> vertices;
    private int edgeCount;
    
@@ -114,8 +114,35 @@ public class DirectedGraph<T> implements GraphInterface<T>
 		
 		return vertexStack;	
 	} // end getTopologicalOrder
-	
-	
+
+
+	public T getFirstVertex(){
+	   T firstEdge = null;
+	   Iterator<T> iterator = vertices.getKeyIterator(); // create an iterator variable
+		//the dictionary hold the vertices in reverse order so the first vertex is the last key of the dictionary
+	   while(iterator.hasNext()) {
+		   firstEdge = iterator.next(); // last key in the dictionary
+	   }
+	   return firstEdge;
+	} // end getFirstVertex
+
+	public T getLastVertex(){
+		T lastEdge = null;
+		Iterator<T> iterator = vertices.getKeyIterator(); // create an iterator variable
+		lastEdge = iterator.next(); // the dictionary is reverse order so the first item is the last vertex
+		return lastEdge;
+	} // end getLastVertex
+
+
+	public void getNeighbors(T vertex){
+	    VertexInterface<T> frontVertex = vertices.getValue(vertex);
+		Iterator<VertexInterface<T>> neighbors = frontVertex.getNeighborIterator();
+		while (neighbors.hasNext()){
+			System.out.println("neighbor : " + neighbors.next());
+		}
+	}
+
+
    //###########################################################################
       public QueueInterface<T> getBreadthFirstTraversal(T origin, T end) {
 	   return null;
@@ -142,8 +169,47 @@ public class DirectedGraph<T> implements GraphInterface<T>
 	
 	//###########################################################################
 	     public int getShortestPath(T begin, T end, StackInterface<T> path) {
-	   return 0;
-	  }
+	         resetVertices();
+	         boolean done = false;
+	         QueueInterface<VertexInterface<T>> vertexQueue = new LinkedQueue<VertexInterface<T>>();
+	         VertexInterface<T> originVertex = vertices.getValue(begin);
+	         VertexInterface<T> endVertex = vertices.getValue(end);
+
+	         originVertex.visit();
+
+	         vertexQueue.enqueue(originVertex);
+
+	         while (!done && !vertexQueue.isEmpty()){
+	       	     System.out.println("asdsadsada  " + vertexQueue.getFront());
+	       	     VertexInterface<T> frontVertex = vertexQueue.dequeue();
+	       	     System.out.println("front vertex : " + frontVertex);
+	       	     Iterator<VertexInterface<T>> neighbors = frontVertex.getNeighborIterator();
+
+	       	     while (!done && neighbors.hasNext()){
+	       	   	    VertexInterface<T> nextNeighbor = neighbors.next();
+	       	   	    System.out.println(nextNeighbor);
+	       	   	    if (!nextNeighbor.isVisited()){
+	       	   	 	   nextNeighbor.visit();
+	       	   	 	   nextNeighbor.setCost(1 + frontVertex.getCost());
+	       	   	 	   nextNeighbor.setPredecessor(frontVertex);
+	       	   	 	   vertexQueue.enqueue(nextNeighbor);
+	       	   	    }
+	       	   	    if (nextNeighbor.equals(endVertex))
+	       	   	 	   done = true;
+	       	     } // end while
+	         } // end while
+	       		 int pathLength = (int)endVertex.getCost();
+	       		 path.push(endVertex.getLabel());
+
+	       		 VertexInterface<T> vertex = endVertex;
+
+	       		 while(vertex.hasPredecessor()){
+	       			 vertex = vertex.getPredecessor();
+	       			 path.push(vertex.getLabel());
+	       		 }
+	         return pathLength;
+	  } // end getShortestPath
+
 	    // 		return the shortest path between begin vertex and end vertex
 
     //###########################################################################
@@ -162,35 +228,6 @@ public class DirectedGraph<T> implements GraphInterface<T>
      //		return the cost of the cheapest path
 
     //###########################################################################
-
-
-	public void readMazeFiles(){
-		File fileName = new File("MazeFiles\\maze1.txt");
-		File[] files = fileName.listFiles();
-		try {
-
-			BufferedReader bufferedReader = new BufferedReader(new FileReader(fileName));
-			String line;
-			int row = 0,column;
-
-			while((line = bufferedReader.readLine()) != null){
-				column = 0;
-				while (column < line.length()){
-					if (line.substring(column,column+1).equals(" ")){
-						System.out.println("(" + row + "," + column + ")");
-					}
-					column++;
-				}
-				row++;
-			}
-
-		}
-		catch (IOException s) {
-			System.out.println("file not found");
-		}
-	}
-
-
 	
 	protected VertexInterface<T> findTerminal()
 	{

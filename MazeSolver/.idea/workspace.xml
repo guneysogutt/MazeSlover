@@ -6,11 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="ca634f99-26e7-4999-a454-08faad1a58bd" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ADTPackage/LinkedQueue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ADTPackage/LinkedQueue.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ADTPackage/UnsortedLinkedDictionary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ADTPackage/UnsortedLinkedDictionary.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MazeSolver/GraphPackage/DirectedGraph$EntryPQ.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MazeSolver/GraphPackage/DirectedGraph$EntryPQ.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MazeSolver/GraphPackage/DirectedGraph.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MazeSolver/GraphPackage/DirectedGraph.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MazeSolver/Test.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MazeSolver/Test.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ADTPackage/StackInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ADTPackage/StackInterface.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GraphPackage/DirectedGraph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GraphPackage/DirectedGraph.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GraphPackage/GraphAlgorithmsInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GraphPackage/GraphAlgorithmsInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GraphPackage/UndirectedGraph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GraphPackage/UndirectedGraph.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Test.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,7 +42,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/guney/IdeaProjects/newTest&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/guney/IdeaProjects/DtatStructuresHomeworkOne&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -84,7 +85,15 @@
       <workItem from="1671003892486" duration="361000" />
       <workItem from="1671020673989" duration="7020000" />
       <workItem from="1671027775449" duration="10000" />
-      <workItem from="1671039561881" duration="1797000" />
+      <workItem from="1671039561881" duration="4441000" />
+      <workItem from="1671177734843" duration="419000" />
+      <workItem from="1671186571793" duration="2577000" />
+      <workItem from="1671202051549" duration="11000" />
+      <workItem from="1671525397055" duration="472000" />
+      <workItem from="1671616176443" duration="6000" />
+      <workItem from="1671721190287" duration="1382000" />
+      <workItem from="1671725673348" duration="90000" />
+      <workItem from="1671794959831" duration="11616000" />
     </task>
     <servers />
   </component>
@@ -106,6 +115,7 @@
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="ADTPackage.UnsortedLinkedDictionary$Node" memberName="next" />
+        <PinnedItemInfo parentTag="ADTPackage.LinkedListWithIterator$IteratorForLinkedList" memberName="nextNode" />
       </pinned-members>
     </pin-to-top-manager>
   </component>

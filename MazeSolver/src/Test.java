@@ -1,10 +1,12 @@
-import GraphPackage.DirectedGraph;
+import ADTPackage.LinkedStack;
+import GraphPackage.UndirectedGraph;
 
 import java.io.*;
+import java.util.Stack;
 
 public class Test {
 
-     static DirectedGraph directedGraph = new DirectedGraph<>(); // initialize global directed graph
+     static UndirectedGraph undirectedGraph = new UndirectedGraph<>(); // initialize global directed graph
      public static void readMazeFiles(){
 
         File fileName = new File("MazeFiles\\maze1.txt"); // create file object
@@ -27,19 +29,19 @@ public class Test {
 
                     if (line.substring(column,column + 1).equals(" ")){ // if an element of the path (vertex)
 
-                        String label = row + "," + column; // hold the coordinates in this format : "row,column"
+                        String label = row + "-" + column; // hold the coordinates in this format : "row,column"
 
-                        directedGraph.addVertex(label); // add new vertex
+                        undirectedGraph.addVertex(label); // add new vertex
 
                         if (oldLine != null) { // check for the upper char (parent)
 
                             String upperChar = oldLine.substring(column, column + 1); // upper char on the maze
 
                             if (upperChar.equals(" ")) {
-                                String upperLabel = (row - 1) + "," + (column); // hold the upper lable's coordinates
+                                String upperLabel = (row - 1) + "-" + (column); // hold the upper lable's coordinates
                                 // connect the edges with two sides
-                                directedGraph.addEdge(label, upperLabel);
-                                directedGraph.addEdge(upperLabel, label);
+                                undirectedGraph.addEdge(label, upperLabel);
+                                undirectedGraph.addEdge(upperLabel, label);
                             }
                         }
 
@@ -49,10 +51,10 @@ public class Test {
 
                             if (previousChar.equals(" ")) {
 
-                                String previousLabel = row + "," + (column - 1); // hold previous vertex label
+                                String previousLabel = row + "-" + (column - 1); // hold previous vertex label
                                 // connect the edges with two sides
-                                directedGraph.addEdge(label, previousLabel);
-                                directedGraph.addEdge(previousLabel, label);
+                                undirectedGraph.addEdge(label, previousLabel);
+                                undirectedGraph.addEdge(previousLabel, label);
                             }
                         }
 
@@ -63,12 +65,12 @@ public class Test {
 
                             if (nextChar.equals(" ")) {
 
-                                String nextLabel = row + "," + (column + 1); // hold next vertex label
+                                String nextLabel = row + "-" + (column + 1); // hold next vertex label
 
-                                directedGraph.addVertex(nextLabel); // add new vertex
+                                //undirectedGraph.addVertex(nextLabel); // add new vertex
                                 // connect the edges with two sides
-                                directedGraph.addEdge(label, nextLabel);
-                                directedGraph.addEdge(nextLabel, label);
+                                undirectedGraph.addEdge(label, nextLabel);
+                                undirectedGraph.addEdge(nextLabel, label);
                             }
                         }
                     }
@@ -85,6 +87,12 @@ public class Test {
 
     public static void main(String[] args) {
          readMazeFiles();
-       directedGraph.displayEdges();
+       undirectedGraph.displayEdges();
+       System.out.println("first edge : " + undirectedGraph.getFirstVertex());
+       System.out.println("last edge : " + undirectedGraph.getLastVertex());
+
+        undirectedGraph.getNeighbors("1-2");
+        System.out.println(undirectedGraph.getShortestPath(undirectedGraph.getFirstVertex(),undirectedGraph.getLastVertex(),new LinkedStack()));
+
     }
 }
