@@ -1,10 +1,12 @@
 import ADTPackage.LinkedStack;
+import ADTPackage.StackInterface;
 import GraphPackage.UndirectedGraph;
 
 import java.io.*;
-import java.util.Stack;
 
 public class Test {
+
+    static String mazeString;
 
      static UndirectedGraph undirectedGraph = new UndirectedGraph<>(); // initialize global directed graph
      public static void readMazeFiles(){
@@ -12,6 +14,8 @@ public class Test {
         File fileName = new File("MazeFiles\\maze1.txt"); // create file object
 
         try {
+
+            mazeString = ""; // initialize the string as null
 
             BufferedReader bufferedReader = new BufferedReader(new FileReader(fileName));
 
@@ -22,6 +26,8 @@ public class Test {
             String oldLine = null; // previous line for adding process (converting to graph)
 
             while((line = bufferedReader.readLine()) != null){
+
+                mazeString += line + "\n"; // add current line to the string of maze
 
                 column = 0; // make the index of column for each step
 
@@ -94,7 +100,29 @@ public class Test {
         System.out.println("first edge : " + undirectedGraph.getFirstVertex());
        System.out.println("last edge : " + undirectedGraph.getLastVertex());
 
-        System.out.println(undirectedGraph.getShortestPath(undirectedGraph.getFirstVertex(),undirectedGraph.getLastVertex(),new LinkedStack()));
+        LinkedStack linkedStack = new LinkedStack<>();
+
+        System.out.println(undirectedGraph.getShortestPath(undirectedGraph.getFirstVertex(),undirectedGraph.getLastVertex(),linkedStack));
         undirectedGraph.getBreadthFirstTraversal(undirectedGraph.getFirstVertex(),undirectedGraph.getLastVertex());
-     }
+
+
+        System.out.println(mazeString);
+        StringBuilder stringBuilder = new StringBuilder(mazeString);
+        LinkedStack shortestPathTemporaryStack = linkedStack;
+
+
+        // add 10 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        while (!shortestPathTemporaryStack.isEmpty()) {
+            String vertex = (String) shortestPathTemporaryStack.pop();
+            int row = Integer.parseInt(vertex.substring(0,vertex.indexOf("-")));
+            int column = Integer.parseInt(vertex.substring(vertex.indexOf("-") + 1));
+            int newIndex = (row * (stringBuilder.indexOf("\n") + 1)) + column;
+            stringBuilder.setCharAt(newIndex,'.');
+        }
+
+        System.out.println(stringBuilder);
+
+        undirectedGraph.getAdjacencyMatrix();
+
+    }
 }
