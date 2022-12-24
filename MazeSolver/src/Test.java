@@ -9,7 +9,7 @@ public class Test {
      static UndirectedGraph undirectedGraph = new UndirectedGraph<>(); // initialize global directed graph
      public static void readMazeFiles(){
 
-        File fileName = new File("MazeFiles\\maze1.txt"); // create file object
+        File fileName = new File("MazeFiles\\maze2.txt"); // create file object
 
         try {
 
@@ -41,7 +41,7 @@ public class Test {
                                 String upperLabel = (row - 1) + "-" + (column); // hold the upper lable's coordinates
                                 // connect the edges with two sides
                                 undirectedGraph.addEdge(label, upperLabel);
-                                undirectedGraph.addEdge(upperLabel, label);
+                                //undirectedGraph.addEdge(upperLabel, label);
                             }
                         }
 
@@ -54,7 +54,7 @@ public class Test {
                                 String previousLabel = row + "-" + (column - 1); // hold previous vertex label
                                 // connect the edges with two sides
                                 undirectedGraph.addEdge(label, previousLabel);
-                                undirectedGraph.addEdge(previousLabel, label);
+                                //undirectedGraph.addEdge(previousLabel, label);
                             }
                         }
 
@@ -70,7 +70,7 @@ public class Test {
                                 //undirectedGraph.addVertex(nextLabel); // add new vertex
                                 // connect the edges with two sides
                                 undirectedGraph.addEdge(label, nextLabel);
-                                undirectedGraph.addEdge(nextLabel, label);
+                                //undirectedGraph.addEdge(nextLabel, label);
                             }
                         }
                     }
@@ -88,11 +88,13 @@ public class Test {
     public static void main(String[] args) {
          readMazeFiles();
        undirectedGraph.displayEdges();
-       System.out.println("first edge : " + undirectedGraph.getFirstVertex());
+        System.out.println("number of edges : " + undirectedGraph.getNumberOfEdges());
+        System.out.println("number of vertices : " + undirectedGraph.getNumberOfVertices());
+
+        System.out.println("first edge : " + undirectedGraph.getFirstVertex());
        System.out.println("last edge : " + undirectedGraph.getLastVertex());
 
-        undirectedGraph.getNeighbors("1-2");
         System.out.println(undirectedGraph.getShortestPath(undirectedGraph.getFirstVertex(),undirectedGraph.getLastVertex(),new LinkedStack()));
-
-    }
+        //undirectedGraph.getDepthFirstTraversal(undirectedGraph.getFirstVertex(),undirectedGraph.getLastVertex());
+     }
 }

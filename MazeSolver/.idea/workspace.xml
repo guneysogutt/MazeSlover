@@ -9,7 +9,6 @@
       <change beforePath="$PROJECT_DIR$/out/production/MazeSolver/GraphPackage/DirectedGraph$EntryPQ.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MazeSolver/GraphPackage/DirectedGraph$EntryPQ.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/MazeSolver/GraphPackage/DirectedGraph.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MazeSolver/GraphPackage/DirectedGraph.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/MazeSolver/Test.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MazeSolver/Test.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ADTPackage/StackInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ADTPackage/StackInterface.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GraphPackage/DirectedGraph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GraphPackage/DirectedGraph.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Test.java" afterDir="false" />
     </list>
@@ -93,7 +92,9 @@
       <workItem from="1671616176443" duration="6000" />
       <workItem from="1671721190287" duration="1382000" />
       <workItem from="1671725673348" duration="90000" />
-      <workItem from="1671794959831" duration="11616000" />
+      <workItem from="1671794959831" duration="11703000" />
+      <workItem from="1671810966709" duration="10949000" />
+      <workItem from="1671830883307" duration="8967000" />
     </task>
     <servers />
   </component>
