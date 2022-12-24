@@ -9,7 +9,7 @@ public class Test {
      static UndirectedGraph undirectedGraph = new UndirectedGraph<>(); // initialize global directed graph
      public static void readMazeFiles(){
 
-        File fileName = new File("MazeFiles\\maze2.txt"); // create file object
+        File fileName = new File("MazeFiles\\maze1.txt"); // create file object
 
         try {
 
@@ -95,6 +95,6 @@ public class Test {
        System.out.println("last edge : " + undirectedGraph.getLastVertex());
 
         System.out.println(undirectedGraph.getShortestPath(undirectedGraph.getFirstVertex(),undirectedGraph.getLastVertex(),new LinkedStack()));
-        //undirectedGraph.getDepthFirstTraversal(undirectedGraph.getFirstVertex(),undirectedGraph.getLastVertex());
+        undirectedGraph.getBreadthFirstTraversal(undirectedGraph.getFirstVertex(),undirectedGraph.getLastVertex());
      }
 }

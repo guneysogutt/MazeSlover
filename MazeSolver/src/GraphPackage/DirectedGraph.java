@@ -261,37 +261,38 @@ public class DirectedGraph<T> implements GraphInterface<T>
 	
 	//###########################################################################
 	public int getShortestPath(T begin, T end, StackInterface<T> path) {
-	    resetVertices();
-	    boolean done = false;
-	    QueueInterface<VertexInterface<T>> vertexQueue = new LinkedQueue<VertexInterface<T>>();
+	    resetVertices(); // reset vertices
+	    boolean done = false; // initialize boolean check variable
+	    QueueInterface<VertexInterface<T>> vertexQueue = new LinkedQueue<VertexInterface<T>>();// initialize vertex queue
+		// create origin and end vertices
 	    VertexInterface<T> originVertex = vertices.getValue(begin);
 	    VertexInterface<T> endVertex = vertices.getValue(end);
 
-	    originVertex.visit();
+	    originVertex.visit(); // set origin vertex is visited
 
-	    vertexQueue.enqueue(originVertex);
+	    vertexQueue.enqueue(originVertex); // add origin vertex to the vertex queue
 
 	    while (!done && !vertexQueue.isEmpty()){
-	        VertexInterface<T> frontVertex = vertexQueue.dequeue();
-	        Iterator<VertexInterface<T>> neighbors = frontVertex.getNeighborIterator();
+	        VertexInterface<T> frontVertex = vertexQueue.dequeue(); // hold the front vertex of the queue
+	        Iterator<VertexInterface<T>> neighbors = frontVertex.getNeighborIterator(); // get current vertex neighbor iterator
 
 	        while (!done && neighbors.hasNext()){
-	      	    VertexInterface<T> nextNeighbor = neighbors.next();
-	      	    if (!nextNeighbor.isVisited()){
-	      	 	   nextNeighbor.visit();
-	      	 	   nextNeighbor.setCost(1 + frontVertex.getCost());
-	      	 	   nextNeighbor.setPredecessor(frontVertex);
-	      	 	   vertexQueue.enqueue(nextNeighbor);
+	      	    VertexInterface<T> nextNeighbor = neighbors.next(); // hold the next neighbor
+	      	    if (!nextNeighbor.isVisited()){ // if not visited
+	      	 	   nextNeighbor.visit(); // set is visited
+	      	 	   nextNeighbor.setCost(1 + frontVertex.getCost()); // increase the path cost by 1
+	      	 	   nextNeighbor.setPredecessor(frontVertex); // set the new predecessor
+	      	 	   vertexQueue.enqueue(nextNeighbor); // add the neighbor to the vertex queue
 	      	    }
-	      	    if (nextNeighbor.equals(endVertex))
-	      	 	   done = true;
+	      	    if (nextNeighbor.equals(endVertex)) // if the neighbor equals to tje end vertex
+	      	 	   done = true; // end the process
 	        } // end while
 	    } // end while
-	   	 int pathLength = (int)endVertex.getCost();
-	   	 path.push(endVertex.getLabel());
+
+	   	 int pathLength = (int)endVertex.getCost(); // get the path langth referred to the end vertex's cost
+	   	 path.push(endVertex.getLabel()); // add end vertex to the stack(parameter)
 
 	   	 VertexInterface<T> vertex = endVertex;
-
 	   	 while(vertex.hasPredecessor()){
 	   		 vertex = vertex.getPredecessor();
 	   		 path.push(vertex.getLabel());
