@@ -1,20 +1,23 @@
+import ADTPackage.LinkedQueue;
 import ADTPackage.LinkedStack;
-import ADTPackage.StackInterface;
 import GraphPackage.UndirectedGraph;
 
 import java.io.*;
+import java.util.Random;
 
 public class Test {
 
     static String mazeString;
-
+    static String firstVertexLabel = null, endVertexLabel;
      static UndirectedGraph undirectedGraph = new UndirectedGraph<>(); // initialize global directed graph
      public static void readMazeFiles(){
 
         File fileName = new File("MazeFiles\\maze1.txt"); // create file object
 
-        try {
 
+
+        try {
+            Random random = new Random();
             mazeString = ""; // initialize the string as null
 
             BufferedReader bufferedReader = new BufferedReader(new FileReader(fileName));
@@ -33,10 +36,17 @@ public class Test {
 
                 while (column < line.length()){ //avoid exceeding the string
 
+                    int randomEdgeWeight = random.nextInt(1,5); // random weight between 1-4
+
                     if (line.substring(column,column + 1).equals(" ")){ // if an element of the path (vertex)
+
 
                         String label = row + "-" + column; // hold the coordinates in this format : "row,column"
 
+                        if (firstVertexLabel == null){
+                            firstVertexLabel = label;
+                        }
+                        endVertexLabel = label;
                         undirectedGraph.addVertex(label); // add new vertex
 
                         if (oldLine != null) { // check for the upper char (parent)
@@ -46,10 +56,10 @@ public class Test {
                             if (upperChar.equals(" ")) {
                                 String upperLabel = (row - 1) + "-" + (column); // hold the upper lable's coordinates
                                 // connect the edges with two sides
-                                undirectedGraph.addEdge(label, upperLabel);
-                                //undirectedGraph.addEdge(upperLabel, label);
+                                undirectedGraph.addEdge(label, upperLabel,randomEdgeWeight);
                             }
                         }
+
 
                         if (column - 1 >= 0) { // check for the previous char
 
@@ -59,8 +69,7 @@ public class Test {
 
                                 String previousLabel = row + "-" + (column - 1); // hold previous vertex label
                                 // connect the edges with two sides
-                                undirectedGraph.addEdge(label, previousLabel);
-                                //undirectedGraph.addEdge(previousLabel, label);
+                                undirectedGraph.addEdge(label, previousLabel,randomEdgeWeight);
                             }
                         }
 
@@ -73,10 +82,8 @@ public class Test {
 
                                 String nextLabel = row + "-" + (column + 1); // hold next vertex label
 
-                                //undirectedGraph.addVertex(nextLabel); // add new vertex
                                 // connect the edges with two sides
-                                undirectedGraph.addEdge(label, nextLabel);
-                                //undirectedGraph.addEdge(nextLabel, label);
+                                undirectedGraph.addEdge(label, nextLabel,randomEdgeWeight);
                             }
                         }
                     }
@@ -92,37 +99,111 @@ public class Test {
     } // end function
 
     public static void main(String[] args) {
-         readMazeFiles();
-       undirectedGraph.displayEdges();
-        System.out.println("number of edges : " + undirectedGraph.getNumberOfEdges());
-        System.out.println("number of vertices : " + undirectedGraph.getNumberOfVertices());
 
-        System.out.println("first edge : " + undirectedGraph.getFirstVertex());
-       System.out.println("last edge : " + undirectedGraph.getLastVertex());
+         readMazeFiles(); // read the file and convert it to graph
 
-        LinkedStack linkedStack = new LinkedStack<>();
+        System.out.println("Adjacency list of vertices:");
+         undirectedGraph.displayEdges(); // print edges
+        //print edges count and vertices count
+         System.out.println("Number of Edges : " + undirectedGraph.getNumberOfEdges());
+         System.out.println("Number of Vertices : " + undirectedGraph.getNumberOfVertices());
 
-        System.out.println(undirectedGraph.getShortestPath(undirectedGraph.getFirstVertex(),undirectedGraph.getLastVertex(),linkedStack));
-        undirectedGraph.getBreadthFirstTraversal(undirectedGraph.getFirstVertex(),undirectedGraph.getLastVertex());
+        System.out.println();
+        System.out.println();
+
+        undirectedGraph.getAdjacencyMatrix(); // get adjacency matrix
+
+        System.out.println();
+        System.out.println();
+
+        // create queues for traversal
+        LinkedQueue dfsQueue = (LinkedQueue) undirectedGraph.getDepthFirstTraversal(firstVertexLabel,endVertexLabel);
+        LinkedQueue bfsQueue = (LinkedQueue) undirectedGraph.getBreadthFirstTraversal(firstVertexLabel,endVertexLabel);
+
+        // create stack for shortest path traversal
+        LinkedStack shortestPathStack = new LinkedStack<>();
+        int shortestPathLength = undirectedGraph.getShortestPath(firstVertexLabel,endVertexLabel,shortestPathStack);
+
+        // create stack for cheapest path traversal
+        LinkedStack chepastPathStack = new LinkedStack<>();
+        double cheapestPathCost = undirectedGraph.getCheapestPath(firstVertexLabel,endVertexLabel,chepastPathStack);
+
+        // create string builders for each path
+        StringBuilder cheapestPath = new StringBuilder(mazeString);
+        StringBuilder shortestPath = new StringBuilder(mazeString);
+        StringBuilder dfsPath = new StringBuilder(mazeString);
+        StringBuilder bfsPath = new StringBuilder(mazeString);
 
 
-        System.out.println(mazeString);
-        StringBuilder stringBuilder = new StringBuilder(mazeString);
-        LinkedStack shortestPathTemporaryStack = linkedStack;
+        int visitedVertexCount = 0; // counter for visited vertices
+
+        while (!dfsQueue.isEmpty()){ // print dfs
+            visitedVertexCount++; // increase counter
+            String vertex = (String) dfsQueue.dequeue(); // get the current label
+            int newIndex = getPrintIndex(vertex,dfsPath);
+            dfsPath.setCharAt(newIndex,'.'); // print
+        }
+        // print dfs
+        System.out.println("------------------------------------------------------------");
+        System.out.println("Depth First Search");
+        System.out.println("Visited Vertex Count For DFS : " + visitedVertexCount);
+        System.out.println(dfsPath);
 
 
-        // add 10 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        while (!shortestPathTemporaryStack.isEmpty()) {
-            String vertex = (String) shortestPathTemporaryStack.pop();
+        visitedVertexCount = 0;
+        while (!bfsQueue.isEmpty()){ // print bfs
+            visitedVertexCount++;// increase counter
+            String vertex = (String) bfsQueue.dequeue(); // get the current label
+            /*
+            //split it then get row and column indexes
             int row = Integer.parseInt(vertex.substring(0,vertex.indexOf("-")));
             int column = Integer.parseInt(vertex.substring(vertex.indexOf("-") + 1));
-            int newIndex = (row * (stringBuilder.indexOf("\n") + 1)) + column;
-            stringBuilder.setCharAt(newIndex,'.');
+            int newIndex = (row * (stringBuilder.indexOf("\n") + 1)) + column; // print index
+
+             */
+            int newIndex = getPrintIndex(vertex,dfsPath);
+            bfsPath.setCharAt(newIndex,'.'); // print
         }
+        // print bfs
+        System.out.println("------------------------------------------------------------");
+        System.out.println("Breadth First Search");
+        System.out.println("Visited Vertex Count For BFS : " + visitedVertexCount);
+        System.out.println(bfsPath);
 
-        System.out.println(stringBuilder);
 
-        undirectedGraph.getAdjacencyMatrix();
+        while (!shortestPathStack.isEmpty()) { // print the shortest path
+            String vertex = (String) shortestPathStack.pop(); // get the current label
+            int newIndex = getPrintIndex(vertex,shortestPath);
+            shortestPath.setCharAt(newIndex,'.'); // print
+        }
+        // print shortest path
+        System.out.println("------------------------------------------------------------");
+        System.out.println("Shortest Path");
+        System.out.println("The visited vertex count in shortest path : " + (shortestPathLength+1));
+        System.out.println(shortestPath);
 
+
+        visitedVertexCount = 0;
+        while (!chepastPathStack.isEmpty()) { // print the cheapest path
+            visitedVertexCount++;// increase counter
+            String vertex = (String) chepastPathStack.pop(); // get the current label
+            int newIndex = getPrintIndex(vertex,cheapestPath);
+            cheapestPath.setCharAt(newIndex,'.'); // print
+        }
+        // print cheapest path
+        System.out.println("------------------------------------------------------------");
+        System.out.println("Cheapest Path");
+        System.out.println("The cost of the path : " + cheapestPathCost);
+        System.out.println("Visited Vertex Count For Cheapest Path : " + visitedVertexCount);
+        System.out.println(cheapestPath);
+
+    }
+
+    static int getPrintIndex(String vertex, StringBuilder stringBuilder){
+        //split it then get row and column indexes
+        int row = Integer.parseInt(vertex.substring(0,vertex.indexOf("-")));
+        int column = Integer.parseInt(vertex.substring(vertex.indexOf("-") + 1));
+        int newIndex = (row * (stringBuilder.indexOf("\n") + 1)) + column; // print index
+        return newIndex;
     }
 }
