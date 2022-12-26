@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="ca634f99-26e7-4999-a454-08faad1a58bd" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MazeSolver/Test.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MazeSolver/Test.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GraphPackage/DirectedGraph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GraphPackage/DirectedGraph.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Test.java" afterDir="false" />
     </list>
@@ -94,7 +95,8 @@
       <workItem from="1671830883307" duration="10010000" />
       <workItem from="1671869626210" duration="1684000" />
       <workItem from="1671896289692" duration="16933000" />
-      <workItem from="1671952013280" duration="33116000" />
+      <workItem from="1671952013280" duration="35078000" />
+      <workItem from="1672040506335" duration="1287000" />
     </task>
     <servers />
   </component>

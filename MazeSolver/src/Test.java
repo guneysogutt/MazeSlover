@@ -8,13 +8,10 @@ import java.util.Random;
 public class Test {
 
     static String mazeString;
-    static String firstVertexLabel = null, endVertexLabel;
      static UndirectedGraph undirectedGraph = new UndirectedGraph<>(); // initialize global directed graph
      public static void readMazeFiles(){
 
-        File fileName = new File("MazeFiles\\maze1.txt"); // create file object
-
-
+        File fileName = new File("MazeFiles\\maze2.txt"); // create file object
 
         try {
             Random random = new Random();
@@ -43,10 +40,6 @@ public class Test {
 
                         String label = row + "-" + column; // hold the coordinates in this format : "row,column"
 
-                        if (firstVertexLabel == null){
-                            firstVertexLabel = label;
-                        }
-                        endVertexLabel = label;
                         undirectedGraph.addVertex(label); // add new vertex
 
                         if (oldLine != null) { // check for the upper char (parent)
@@ -102,6 +95,10 @@ public class Test {
 
          readMazeFiles(); // read the file and convert it to graph
 
+        String firstVertex = (String) undirectedGraph.getFirstVertex();
+        String endVertex = (String) undirectedGraph.getLastVertex();
+
+
         System.out.println("Adjacency list of vertices:");
          undirectedGraph.displayEdges(); // print edges
         //print edges count and vertices count
@@ -117,16 +114,16 @@ public class Test {
         System.out.println();
 
         // create queues for traversal
-        LinkedQueue dfsQueue = (LinkedQueue) undirectedGraph.getDepthFirstTraversal(firstVertexLabel,endVertexLabel);
-        LinkedQueue bfsQueue = (LinkedQueue) undirectedGraph.getBreadthFirstTraversal(firstVertexLabel,endVertexLabel);
+        LinkedQueue dfsQueue = (LinkedQueue) undirectedGraph.getDepthFirstTraversal(firstVertex,endVertex);
+        LinkedQueue bfsQueue = (LinkedQueue) undirectedGraph.getBreadthFirstTraversal(firstVertex,endVertex);
 
         // create stack for shortest path traversal
         LinkedStack shortestPathStack = new LinkedStack<>();
-        int shortestPathLength = undirectedGraph.getShortestPath(firstVertexLabel,endVertexLabel,shortestPathStack);
+        int shortestPathLength = undirectedGraph.getShortestPath(firstVertex,endVertex,shortestPathStack);
 
         // create stack for cheapest path traversal
-        LinkedStack chepastPathStack = new LinkedStack<>();
-        double cheapestPathCost = undirectedGraph.getCheapestPath(firstVertexLabel,endVertexLabel,chepastPathStack);
+        LinkedStack cheapestPathStack = new LinkedStack<>();
+        double cheapestPathCost = undirectedGraph.getCheapestPath(firstVertex,endVertex,cheapestPathStack);
 
         // create string builders for each path
         StringBuilder cheapestPath = new StringBuilder(mazeString);
@@ -154,13 +151,6 @@ public class Test {
         while (!bfsQueue.isEmpty()){ // print bfs
             visitedVertexCount++;// increase counter
             String vertex = (String) bfsQueue.dequeue(); // get the current label
-            /*
-            //split it then get row and column indexes
-            int row = Integer.parseInt(vertex.substring(0,vertex.indexOf("-")));
-            int column = Integer.parseInt(vertex.substring(vertex.indexOf("-") + 1));
-            int newIndex = (row * (stringBuilder.indexOf("\n") + 1)) + column; // print index
-
-             */
             int newIndex = getPrintIndex(vertex,dfsPath);
             bfsPath.setCharAt(newIndex,'.'); // print
         }
@@ -184,9 +174,9 @@ public class Test {
 
 
         visitedVertexCount = 0;
-        while (!chepastPathStack.isEmpty()) { // print the cheapest path
+        while (!cheapestPathStack.isEmpty()) { // print the cheapest path
             visitedVertexCount++;// increase counter
-            String vertex = (String) chepastPathStack.pop(); // get the current label
+            String vertex = (String) cheapestPathStack.pop(); // get the current label
             int newIndex = getPrintIndex(vertex,cheapestPath);
             cheapestPath.setCharAt(newIndex,'.'); // print
         }

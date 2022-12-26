@@ -162,6 +162,23 @@ public class DirectedGraph<T> implements GraphInterface<T>
 	   return counter; // return the index number
 	} // end getIndex
 
+	public T getFirstVertex(){
+		T firstVertex = null;
+		Iterator<T> iterator = vertices.getKeyIterator(); // create an iterator variable
+		//the dictionary hold the vertices in reverse order so the first vertex is the last key of the dictionary
+		while(iterator.hasNext()) {
+			firstVertex = iterator.next(); // last key in the dictionary
+		}
+		return firstVertex;
+	} // end getFirstVertex
+
+	public T getLastVertex(){
+		T lastEdge = null;
+		Iterator<T> iterator = vertices.getKeyIterator(); // create an iterator variable
+		lastEdge = iterator.next(); // the dictionary is reverse order so the first item is the last vertex
+		return lastEdge;
+	} // end getLastVertex
+
 	private Double getEdgeWeight(T begin, T end) {
 		boolean found = false;
 		double weight = 0.0;
