@@ -6,9 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="ca634f99-26e7-4999-a454-08faad1a58bd" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MazeSolver/Test.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MazeSolver/Test.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GraphPackage/DirectedGraph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GraphPackage/DirectedGraph.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Test.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,7 +37,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/guney/IdeaProjects/DtatStructuresHomeworkOne&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/guney/Documents/GitHub/SimpleSearchEngine&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -96,7 +94,9 @@
       <workItem from="1671869626210" duration="1684000" />
       <workItem from="1671896289692" duration="16933000" />
       <workItem from="1671952013280" duration="35078000" />
-      <workItem from="1672040506335" duration="1287000" />
+      <workItem from="1672040506335" duration="1308000" />
+      <workItem from="1672041871605" duration="101000" />
+      <workItem from="1672136368097" duration="947000" />
     </task>
     <servers />
   </component>

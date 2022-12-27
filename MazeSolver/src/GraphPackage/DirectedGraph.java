@@ -213,7 +213,6 @@ public class DirectedGraph<T> implements GraphInterface<T>
 	   VertexInterface<T> endVertex = vertices.getValue(end);
 
 	   // add the origin vertex to traversal and vertex queue
-	   //traversalQueue.enqueue(originVertex.getLabel());
 	   vertexQueue.enqueue(originVertex);
 	   originVertex.visit(); // set the origin vertex visited
 
@@ -227,14 +226,12 @@ public class DirectedGraph<T> implements GraphInterface<T>
 			   if (!nextNeighbor.isVisited()){ // if not visited
 			   nextNeighbor.visit(); // set as visited
 			   // add current neighbor to the queues
-			   //System.out.println(nextNeighbor);
 			   vertexQueue.enqueue(nextNeighbor);
 			   }
 		   }
 		   if (frontVertex.equals(endVertex)) // if last vertex found finish the process
 			   done = true;
 	   }
-	   //traversalQueue.enqueue(endVertex.getLabel());
 
 	   return traversalQueue; // return the traversal
    } // end getBreadthFirstTraversal
@@ -271,7 +268,7 @@ public class DirectedGraph<T> implements GraphInterface<T>
 		}
 
 		return traversalQueue; // return the traversal
-	} // end getBreadthFirstTraversal
+	} // end getDepthFirstTraversal
 
 	public int getShortestPath(T begin, T end, StackInterface<T> path) {
 	    resetVertices(); // reset vertices
@@ -358,9 +355,6 @@ public class DirectedGraph<T> implements GraphInterface<T>
 
 	   return pathCost;
    } // end getCheapestPath
-     //		return the cost of the cheapest path
-
-    //###########################################################################
 	
 	protected VertexInterface<T> findTerminal()
 	{
